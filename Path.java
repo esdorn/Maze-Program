@@ -79,7 +79,17 @@ public class Path
    {
       return endingColumn;
    }
-
+   
+   public int getSColumn()
+   {
+       return startingColumn;
+   }
+   
+   public int getSRow()
+   {
+       return startingRow;
+   }
+   
    /**
       Gets the next row of this path if it continues in the ending
       direction.
