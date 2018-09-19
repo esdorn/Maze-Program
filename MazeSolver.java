@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.LinkedList;
 
 /**
    Modify the maze solver program of Section 15.6.4 (below)
@@ -22,6 +23,7 @@ public class MazeSolver {
       		}
 
       		Path temp;
+		LinkedList<Path> route = new LinkedList<>();
 
       		while (!s.isEmpty()) {
 			temp = s.pop();
@@ -35,9 +37,14 @@ public class MazeSolver {
 				for (Path path : maze.pathsFrom(temp.getEndingRow(), temp.getEndingColumn())) {
 					if (!path.isOpposite(temp)) {
 						s.push(path);
+						route.add(path);
 					}
+					
 				}
+				if (maze.pathsFrom(temp.getEndingRow(), temp.getEndingColumn()).size() == 0) route.remove(temp);
 			}
 		}
+
+		for (Path read : route) System.out.println(read);
 	}
 }
