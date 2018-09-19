@@ -7,22 +7,37 @@ import java.util.Stack;
    When you have previously seen an intersection, treat it
    as a dead end and do not add paths to the stack.
 */
-public class MazeSolver
-{
-   /**
-      Traverses a maze, printing out a path to the exit.
-      @param maze the maze
-      @param param the row of the starting position
-      @param param the column of the starting position
-   */
-   public static void solve(Maze maze, int row, int column)
-   {
-      Stack<Path> s = new Stack<>();
-      for (Path p : maze.pathsFrom(row, column))
-      {
-         s.push(p);
-      }
-// your code here
+public class MazeSolver {
+	/**
+     	Traverses a maze, printing out a path to the exit.
+      	@param maze the maze
+      	@param param the row of the starting position
+      	@param param the column of the starting position
+   	*/
+   	public static void solve(Maze maze, int row, int column) {
+     		Stack<Path> s = new Stack<>();
+     		for (Path p : maze.pathsFrom(row, column))
+     			{
+       		 	s.push(p);
+      		}
 
-   }
+      		Path temp;
+
+      		while (!s.isEmpty()) {
+			temp = s.pop();
+			System.out.println(temp);
+
+			if (maze.isExit(temp.getEndingRow(), temp.getEndingColumn())) {
+				break;
+			}
+
+			else {
+				for (Path path : maze.pathsFrom(temp.getEndingRow(), temp.getEndingColumn())) {
+					if (!path.isOpposite(temp)) {
+						s.push(path);
+					}
+				}
+			}
+		}
+	}
 }
