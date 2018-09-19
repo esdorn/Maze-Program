@@ -22,7 +22,14 @@ public class MazeSolver
       {
          s.push(p);
       }
-// your code here
-
+      Path path;
+      while (maze.isExit(s.peek().getEndingRow(),s.peek().getEndingColumn()))
+      {
+         path = s.pop();
+         for (Path p : maze.pathsFrom(path.getEndingRow(), path.getEndingColumn()))
+         {
+             s.push(p);
+         }
+      }
    }
 }

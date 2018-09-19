@@ -130,7 +130,7 @@ public class Path
          + ")" + "NESW".charAt(startingDirection);
       if (endingRow != startingRow || endingColumn != startingColumn)
       {
-   result = result + "<->(" + endingRow + "," + endingColumn 
+            result = result + "<->(" + endingRow + "," + endingColumn 
              + ")"+ "NESW".charAt(endingDirection); 
       }
       return result;
